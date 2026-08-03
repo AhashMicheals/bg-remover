@@ -15,8 +15,8 @@ def get_session():
     global _REMBG_SESSION
     if _REMBG_SESSION is None:
         try:
-            logger.info("Initializing rembg session (u2net model)...")
-            _REMBG_SESSION = new_session("u2net")
+            logger.info("Initializing rembg session (u2netp lightweight model)...")
+            _REMBG_SESSION = new_session("u2netp")
         except Exception as e:
             logger.warning(f"Could not pre-initialize rembg session: {e}. Will use default remove call.")
             _REMBG_SESSION = None

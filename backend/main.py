@@ -70,13 +70,6 @@ async def lifespan(app: FastAPI):
     os.makedirs(UPLOADS_DIR, exist_ok=True)
     os.makedirs(OUTPUTS_DIR, exist_ok=True)
     os.makedirs(TEMP_DIR, exist_ok=True)
-    
-    # Pre-warm rembg session in background
-    try:
-        from services.background import get_session
-        get_session()
-    except Exception as e:
-        logger.warning(f"Rembg session pre-warm deferred: {e}")
 
     cleanup_task = asyncio.create_task(cleanup_old_files_loop())
     
