@@ -13,7 +13,13 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 
-from api.routes import router as api_router, BASE_DIR, UPLOADS_DIR, OUTPUTS_DIR, TEMP_DIR, JOBS
+import sys
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+if BASE_DIR not in sys.path:
+    sys.path.insert(0, BASE_DIR)
+
+from api.routes import router as api_router, UPLOADS_DIR, OUTPUTS_DIR, TEMP_DIR, JOBS
 
 logging.basicConfig(
     level=logging.INFO,
